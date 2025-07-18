@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Private Chat</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="chat-container">
+        <!-- Sidebar with Conversation List -->
+        <aside class="sidebar">
+            <header class="sidebar-header">
+                <div class="user-profile">
+                    <img src="https://via.placeholder.com/40" alt="User Avatar" class="avatar">
+                    <span id="current-username">MyUsername</span>
+                </div>
+                <button id="new-chat-btn" class="btn-icon"><i class="fas fa-plus"></i></button>
+            </header>
+
+            <div class="conversation-list" id="conversation-list">
+                <!-- Conversation items will be injected by JavaScript -->
+                <!-- Example Item:
+                <div class="conversation-item active" data-id="conv1">
+                    <img src="https://via.placeholder.com/50" alt="Avatar" class="avatar">
+                    <div class="conversation-details">
+                        <span class="conversation-name">Alice</span>
+                        <p class="last-message">Sounds good! See you then.</p>
+                    </div>
+                    <span class="conversation-timestamp">10:42 AM</span>
+                </div>
+                -->
+            </div>
+        </aside>
+
+        <!-- Main Chat Area -->
+        <main class="chat-area">
+            <header class="chat-header">
+                <div class="user-profile">
+                    <button id="back-to-conversations" class="btn-icon"><i class="fas fa-arrow-left"></i></button>
+                    <img src="https://via.placeholder.com/40" alt="Chat Avatar" class="avatar" id="chat-avatar">
+                    <span id="chat-username">Select a conversation</span>
+                </div>
+                <div class="chat-actions">
+                    <button id="delete-conversation-btn" class="btn-icon"><i class="fas fa-trash"></i></button>
+                </div>
+            </header>
+
+            <div class="message-container" id="message-container">
+                <!-- Messages will be injected by JavaScript -->
+                <!-- Example Messages:
+                <div class="message received">
+                    <p>Hey, how are you?</p>
+                    <span class="timestamp">10:40 AM</span>
+                </div>
+                <div class="message sent">
+                    <p>I'm good, thanks! How about you?</p>
+                    <span class="timestamp">10:41 AM</span>
+                </div>
+                 <div class="message sent">
+                    <img src="https://via.placeholder.com/250" alt="Sent image" class="message-image">
+                    <span class="timestamp">10:41 AM</span>
+                </div>
+                -->
+            </div>
+
+            <footer class="chat-footer">
+                <form id="message-form" class="message-form">
+                    <input type="file" id="image-upload" hidden accept="image/*">
+                    <button type="button" id="image-upload-btn" class="btn-icon"><i class="fas fa-paperclip"></i></button>
+                    <input type="text" id="message-input" placeholder="Type a message..." autocomplete="off">
+                    <button type="submit" class="btn-icon btn-send"><i class="fas fa-paper-plane"></i></button>
+                </form>
+            </footer>
+        </main>
+    </div>
+
+    <!-- New Chat Modal -->
+    <div id="new-chat-modal" class="modal">
+        <div class="modal-content">
+            <header class="modal-header">
+                <h2>Start New Chat</h2>
+                <button id="close-modal-btn" class="btn-icon">&times;</button>
+            </header>
+            <div class="modal-body">
+                <input type="text" id="user-search-input" placeholder="Search by username...">
+                <div id="user-search-results">
+                    <!-- Search results will be injected here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="app.js"></script>
+</body>
+</html>
