@@ -269,4 +269,43 @@ document.addEventListener('DOMContentLoaded', () => {
     function showConversationList() {
         document.querySelector('.sidebar').classList.add('open');
     }
+function handleLogin(e) {
+    e.preventDefault();
+    console.log('Attempting login...');
+    alert('Login successful! Redirecting...');
+    window.location.href = 'chat.html';
+}```
+
+**Updated `app.js` (connected to a real backend):**
+```javascript
+async function handleLogin(e) {
+    e.preventDefault();
+    const username = e.target.username.value;
+    const password = e.target.password.value;
+
+    // The URL for your live backend (e.g., from Supabase or Firebase)
+    const backendUrl = 'https://your-backend-service.com/login'; 
+
+    try {
+        const response = await fetch(backendUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
+        });
+
+        if (!response.ok) {
+            alert('Login failed. Please check your credentials.');
+            return;
+        }
+
+        const data = await response.json();
+        // Save the user's token to keep them logged in
+        localStorage.setItem('authToken', data.token); 
+        window.location.href = 'chat.html';
+
+    } catch (error) {
+        console.error('Login error:', error);
+        alert('An error occurred. Please try again later.');
+    }
+}
 });
